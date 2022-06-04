@@ -19,3 +19,5 @@ public:
       return root;    
   }
 };
+//root->left calling root->right calling at any moment if root is leaf node and it's value is target then return null here
+// Here TreeNode* left = is not written because we want to alter the tree
