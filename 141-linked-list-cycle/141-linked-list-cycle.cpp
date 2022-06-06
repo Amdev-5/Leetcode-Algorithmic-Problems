@@ -9,6 +9,7 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
+      /*
       unordered_set<ListNode*> s;
       ListNode* l1 = head;
       while(l1!=NULL)
@@ -19,7 +20,8 @@ public:
         l1 = l1->next;
       }
       return false;
-      /*
+      */
+      
         if(head==NULL)
         {
             return false;
@@ -28,7 +30,6 @@ public:
         ListNode* fast = head;
         while(fast->next!=NULL and fast->next->next!=NULL )
         {
-            
             slow = slow->next;
             fast = fast->next->next;
             if(slow==fast)
@@ -37,7 +38,7 @@ public:
             }
         }
         return false;
-        */
+      
         
         }
         
