@@ -9,6 +9,7 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
+      /*
       unordered_set<ListNode*> s;
       ListNode* l1 = head;
       while(l1!=NULL)
@@ -19,6 +20,27 @@ public:
         l1 = l1->next;
       }
       return  NULL;
+      */
+      if(head==NULL || head->next==NULL)
+        return NULL;
+      ListNode* slow = head;
+      ListNode* fast = head;
+      ListNode* entry= head;
+      while(fast->next!=NULL && fast->next->next!=NULL)
+      {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow==fast)
+        {
+          while(entry!=slow)
+          {
+            slow = slow->next;
+            entry = entry->next;
+          }
+          return slow;
+        }
+      }
+      return NULL;
         
     }
 };
