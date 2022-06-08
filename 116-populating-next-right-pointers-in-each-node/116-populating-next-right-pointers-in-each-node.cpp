@@ -22,21 +22,22 @@ public:
       if(root==NULL) return NULL;
       queue<Node*> q;
       q.push(root);
-      vector<Node*> v;
+      //vector<Node*> v;
+      Node* temp = root;
       while(q.size())
       {
-        v.clear();
+        //v.clear();
         int count = q.size();
         for(int i = 0;i<count;i++)
         {
           Node* curr = q.front();
           q.pop();
-          v.push_back(curr);
-          if(i==count-1)
-            curr->next = NULL;
-          if(i!=0)
+          //v.push_back(curr);
+          if(i==0) temp = curr;
+          else
           {
-            v[i-1]->next = v[i];
+            if(i==count-1) curr->next = NULL;
+            if(i!=0) temp->next = curr, temp = curr; 
           }
           if(curr->left!=NULL) q.push(curr->left);
           if(curr->right!=NULL) q.push(curr->right);
