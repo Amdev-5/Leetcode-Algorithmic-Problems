@@ -2,6 +2,7 @@ class Solution {
 public:
   set<vector<int>> set;
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+      sort(nums.begin(),nums.end());
       rec(nums,{},nums.size());
       vector<vector<int>> res;
       for(auto t: set)
@@ -15,7 +16,7 @@ public:
   {
     if(N==0)
     {
-      sort(temp.begin(),temp.end());
+      //sort(temp.begin(),temp.end());
       set.insert(temp);
     }
     else
