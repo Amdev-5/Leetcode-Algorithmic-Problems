@@ -24,9 +24,11 @@ public:
   {
     TreeNode* root = new TreeNode(pre[preStart]);
     if(preStart==preEnd) return root;
-    int postRoot = m[pre[preStart+1]];
+    int postRoot = m[pre[preStart+1]]; //2
     int len = postRoot-postStart+1;
+    cout<<len<<" \n";
     root->left = build(pre,preStart+1,preStart+len,post,postStart,postStart+len-1,m);
+    // 1,4,0,2
     if(postRoot+1==postEnd) return root;
     root->right = build(pre,preStart+len+1,preEnd,post,postRoot+1,postEnd-1,m);
     return root;
