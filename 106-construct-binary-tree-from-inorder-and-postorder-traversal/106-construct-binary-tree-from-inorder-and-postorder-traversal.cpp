@@ -21,9 +21,9 @@ public:
     if(a>b || c>d) return NULL;
     TreeNode* root = new TreeNode(post[d]);
     int index = m[post[d]];
-    int len = index-a;
-    root->left = build(in,a,index-1,post,c,c+len-1,m);
-    root->right = build(in,index+1,b,post,c+len,d-1,m);
+    int numsLeft = index-a;
+    root->left = build(in,a,index-1,post,c,c+numsLeft-1,m);
+    root->right = build(in,index+1,b,post,c+numsLeft,d-1,m);
     return root;
     
   }
