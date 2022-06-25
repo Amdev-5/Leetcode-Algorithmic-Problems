@@ -23,7 +23,7 @@ public:
   {
     if(a>b) return NULL;
     TreeNode* root= new TreeNode(pre[a]);
-    if(a==b) return root;
+    //if(a==b) return root;
     int index = b+1;
     for(int i = a;i<=b;i++)
     {
