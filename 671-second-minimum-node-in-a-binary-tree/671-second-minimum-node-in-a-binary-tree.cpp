@@ -11,6 +11,23 @@
  */
 class Solution {
 public:
+  int findSecondMinimumValue(TreeNode* root) {
+    if(root==NULL) return -1;
+    int first = root->val;
+    return mini(root,first);
+  }
+  int mini(TreeNode* root, int first)
+  {
+    if(root==NULL) return -1;
+    if(root->val!=first) return root->val;
+    int left = mini(root->left,first);
+    int right = mini(root->right,first);
+    if(left==-1) return right;
+    if(right==-1) return left;
+    return min(left,right);
+  }
+};
+  /*
   vector<int> nums;
     int findSecondMinimumValue(TreeNode* root) {
       dfs(root);
@@ -32,3 +49,4 @@ public:
     dfs(root->right);
   }
 };
+*/
