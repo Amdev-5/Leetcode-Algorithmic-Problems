@@ -11,6 +11,21 @@
  */
 class Solution {
 public:
+  TreeNode* insertIntoMaxTree(TreeNode* root, int val) {
+    if(root==NULL || val>root->val)
+    {
+      TreeNode* n = new TreeNode(val);
+      n->left = root;
+      return n;
+    }
+    else
+    {
+      root->right = insertIntoMaxTree(root->right,val);
+      return root;
+    }
+  }
+};
+  /*
   vector<int> nums; 
     TreeNode* insertIntoMaxTree(TreeNode* root, int val) {
       dfs(root);
@@ -42,3 +57,4 @@ public:
     return root;
   }
 };
+*/
