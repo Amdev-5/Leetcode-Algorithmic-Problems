@@ -24,7 +24,7 @@ public:
   {
     if(start>end) return NULL;
     int z=*max_element(nums.begin()+start,nums.begin()+end+1);
-    cout<<z<<" ";
+    //cout<<z<<" ";
     int index = m[z];
     TreeNode* root= new TreeNode(z);
     root->left = build(nums,start,index-1,m);
