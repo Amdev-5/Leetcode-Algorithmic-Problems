@@ -12,3 +12,10 @@ public:
       return res;
     }
 };
+/*
+sort 
+[7,0],[7,1],[6,1],[5,0],[5,2],[4,4]
+
+now insert in res according to how many bigger height person needed in front res.begin()+person[1],person
+
+*/
