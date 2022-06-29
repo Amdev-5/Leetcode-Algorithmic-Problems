@@ -7,6 +7,20 @@ public:
       {
         m[nums[i]]++;
       }
+      vector<int> res;
+      priority_queue<pair<int,int>> pq; //frq,number
+      for(auto t:m)
+      {
+        pq.push({t.second,t.first});
+        if(pq.size()>m.size()-k)
+        {
+          res.push_back(pq.top().second);
+          pq.pop();
+        }
+          //pq.pop();
+      }
+      return res;
+      /*
       vector<pair<int,int>> v;
       for(auto t: m)
       {
@@ -22,7 +36,7 @@ public:
         res.push_back(v[i].first);
       }
       return res;
-      
+      */
         
     }
 };
