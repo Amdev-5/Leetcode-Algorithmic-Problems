@@ -33,22 +33,28 @@ public:
       */
       //vector<int> vis(n+1,false);
       vector<int> dp(n+1,-1);
-      return dfs(adj,n,dp,dist);     
+      return dfs(dist,n,adj,dp);     
     }
-  int dfs(vector<vector<pair<int,int>>>& gp, int s, vector<int>& dp, vector<int>& dist) {
-        int mod = 1e9+7;
-        if (s == 1) return 1;
-        if (dp[s] != -1) return dp[s];
-        int sum = 0, weight, val;
-        for (auto& n : gp[s]) {
-            weight = dist[s];
-            val = dist[n.first];
-            if (val > weight) {
-                sum = (sum % mod + dfs(gp, n.first, dp, dist) % mod) % mod;
-            }
-        }
-        return dp[s] = sum % mod;
+  int dfs(vector<int> & dist,int i,vector<vector<pair<int,int>>>& adj,vector<int> &dp)
+  {
+    int mod = 1e9+7;
+    if(i==1) return 1;
+    if(dp[i]!=-1) return dp[i];
+    //if(i==1) return 1;
+    int res =0,weight,val;
+    for(auto& t: adj[i])
+    {
+      weight = dist[i];
+      val = dist[t.first];
+      if(val>weight)
+      {
+        res = (res%mod + dfs(dist,t.first,adj,dp)%mod)%mod;
+        //dfs(dist,t.first,adj);
+      }
     }
+    return dp[i] = res%mod;
+    
+  }
 };
 /*
 make a vector store distance from lastnode to each node using dijkstras
