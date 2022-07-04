@@ -1,6 +1,6 @@
 class Solution {
 public:
-  //int BASE = 1000000;
+  int BASE = 1000000;
     int repeatedStringMatch(string A, string B) {
       if(A == B) return 1;
         int count = 1;
@@ -10,12 +10,10 @@ public:
             source+=A;
         }
         if(source == B) return count;
-        if(source.find(B)!=string::npos) return count;
-      string temp = source+A;
-        if(temp.find(B)!=string::npos) return count+1;
+        if(Rabin_Karp(source,B) != -1) return count;
+        if(Rabin_Karp(source+A,B) != -1) return count+1;
         return -1;
     }
-  /*
     int Rabin_Karp(string source, string target){
         if(source == "" or target == "") return -1;
         int m = target.size();
@@ -23,7 +21,6 @@ public:
         for(int i = 0;i<m;i++){
             power = (power*31)%BASE;
         }
-      //31^8
         int targetCode = 0;
         for(int i = 0;i<m;i++){
             targetCode = (targetCode*31+target[i])%BASE;
@@ -46,5 +43,4 @@ public:
       
         
     }
-    */
 };
