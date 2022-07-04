@@ -1,6 +1,67 @@
 class Solution {
 public:
     string longestPalindrome(string s) {
+      int n = s.size();
+      bool dp[n][n];
+      memset(dp,false,sizeof(dp));
+      int g = 0;
+      int res = 1;
+      pair<int,int> p;
+      for(int g=0;g<n;g++)
+      {
+        for(int i=0,j=g;j<n;i++,j++)
+        {
+          if(g==0)
+          {
+            dp[i][j] = true;
+            p = {i,j};
+          }
+          else if(g==1)
+          {
+            if(s[i]==s[j])
+            {
+              dp[i][j] = true;
+              res = 2;
+              p = {i,j};
+            }
+          }
+          else
+          {
+            if(s[i]==s[j] && dp[i+1][j-1]==true)
+            {
+              dp[i][j] = true;
+              if(j-i+1>res)
+              {
+                res = j-i+1;
+                p = {i,j};
+              }
+              //res = max(res,j-i+1);
+            }
+          }
+        }
+      }
+      return s.substr(p.first,p.second-p.first+1);
+                    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      /*
         int n = s.length();
         bool dp[n][n];
         memset(dp,false,sizeof(dp));
@@ -37,6 +98,7 @@ public:
             ou+=s[i];
         }
         return ou;
+        */
         
         
     }
