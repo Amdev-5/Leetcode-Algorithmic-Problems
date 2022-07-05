@@ -11,6 +11,37 @@
  */
 class Solution {
 public:
+  bool isValidBST(TreeNode* root) {
+    //INT_MIN<root->val<INT_MAX
+    // INT_MIN<root->left->val<root->val
+    //root->val<root->right->val< INT_MAX
+    //if(root->left==NULL && root->right==NULL) return true;
+    return isBST(root,LONG_MIN,LONG_MAX);
+    
+  }
+  bool isBST(TreeNode* root,long mini,long maxi)
+  {
+    if(root== NULL) return true;
+    if(root->val<=mini || root->val>=maxi) return false;
+    return (isBST(root->left,mini,root->val) && isBST(root->right,root->val,maxi));
+  }
+};
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /*
     bool isValidBST(TreeNode* root) {
       if(root->left==NULL && root->right==NULL) return true;
       return isValid(root,LONG_MIN,LONG_MAX);
@@ -24,3 +55,4 @@ public:
     
   }
 };
+*/
