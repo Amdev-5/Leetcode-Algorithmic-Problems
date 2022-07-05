@@ -11,19 +11,42 @@
  */
 class Solution {
 public:
+  TreeNode* bstFromPreorder(vector<int>& preorder) {
+    return build(preorder,0,preorder.size()-1);
+    
+  }
+  TreeNode* build(vector<int> & preorder,int left,int right)
+  {
+    if(left>right) return NULL;
+    TreeNode* root = new TreeNode(preorder[left]);
+    int index = right+1;
+    for(int i = left;i<=right;i++)
+    {
+      if(preorder[i]>preorder[left])
+      {
+        index = i;
+        break;
+      }
+    }
+    root->left = build(preorder,left+1,index-1);
+    root->right = build(preorder,index,right);
+    return root;
+  }
+  
+  
+};
+/*
+
+
+
+  
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-      //unordered_map<int,int> m;
-      //for(int i = 0;i<preorder.size();i++) m[preorder[i]] = i;
-      return build(preorder,0,preorder.size()-1);
-      
-      
-        
+      return build(preorder,0,preorder.size()-1);   
     }
   TreeNode* build(vector<int> & pre, int a ,int b)
   {
     if(a>b) return NULL;
     TreeNode* root= new TreeNode(pre[a]);
-    //if(a==b) return root;
     int index = b+1;
     for(int i = a;i<=b;i++)
     {
@@ -38,3 +61,4 @@ public:
     return root;
   }
 };
+*/
