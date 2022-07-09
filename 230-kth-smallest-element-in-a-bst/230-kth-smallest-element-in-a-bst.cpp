@@ -11,6 +11,26 @@
  */
 class Solution {
 public:
+  int kthSmallest(TreeNode* root, int k) {
+    stack<TreeNode*> st;
+    TreeNode* p = root;
+    while(p || !st.empty())
+    {
+      while(p)
+      {
+        st.push(p);
+        p = p->left;
+      }
+      p = st.top();
+      if(--k==0) return p->val;
+      st.pop();
+      p = p->right;
+      
+    }
+    return 0;
+  }
+};
+  /*
   int count = 0;
   int kthSmallest(TreeNode* root, int k) {
     stack<int> st;
@@ -34,6 +54,7 @@ public:
     pre(root->right,st);
   }
 };
+*/
   /*
   int kthSmallest(TreeNode* root, int k) {
     stack<TreeNode*> st;
