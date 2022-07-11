@@ -11,6 +11,26 @@
  */
 class Solution {
 public:
+  int maxlevel = 0;
+  vector<int> res;
+  vector<int> rightSideView(TreeNode* root) {
+    rec(root,1);
+    return res;
+    
+    
+  }
+  void rec(TreeNode* root, int level)
+  {
+    if(root==NULL) return;
+    if(level>maxlevel)
+    {
+      res.push_back(root->val);
+      maxlevel = level;
+    }
+    rec(root->right,level+1);
+    rec(root->left,level+1);
+  }
+};/*
   vector<int> rightSideView(TreeNode* root) {
     if(root==NULL) return {};
     queue<TreeNode*> q;
@@ -32,7 +52,7 @@ public:
       res.push_back(temp[count-1]);
     }
     return res;
-  }
+  }*/
   /*
   int maxlevel = 0;
   vector<int> res;
@@ -54,4 +74,3 @@ public:
     
   }
   */
-};
