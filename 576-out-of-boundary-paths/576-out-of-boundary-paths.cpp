@@ -2,8 +2,9 @@ class Solution {
 public:
   int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
     int mod = 1e9 +7;
-    //int dp[maxMove+1][m][n];
-    vector<vector<vector<int>>> dp(maxMove+1,vector<vector<int>>(m,vector<int>(n,0)));
+    int dp[maxMove+1][m][n];
+    memset(dp,0,sizeof(dp));
+    //vector<vector<vector<int>>> dp(maxMove+1,vector<vector<int>>(m,vector<int>(n,0)));
     int dir[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
     for(int step = 1;step<=maxMove;step++)
     {
