@@ -21,27 +21,7 @@ public:
     }
     return res;
   }
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /*
+};/*
     //binary search approach in LIS
     int lengthOfLIS(vector<int>& nums) {
         int n = nums.size();
@@ -86,15 +66,7 @@ temp 10
      2 3 7 101
      2 3 7 18
      return temp.size();
-     */
-     
-    
-     
-     
-    
-    
-    
-    
+     */    
     /* dp approach
     int lengthOfLIS(vector<int>& nums) {
         int lis[nums.size()];
